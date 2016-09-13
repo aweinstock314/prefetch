@@ -2,6 +2,10 @@
 name = "prefetch"
 version = "0.1.0"
 authors = ["Avi Weinstock <aweinstock314@gmail.com>"]
+description = "prefetch provides a type-safe wrapper around LLVM's prefetch intrinsic"
+repository = "https://github.com/aweinstock314/prefetch"
+license = "Apache-2.0"
+keywords = ["prefetch", "cache", "intrinsic"]
 
 [dependencies]
 llvmint = "0.0.2"
