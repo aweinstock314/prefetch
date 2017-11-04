@@ -14,8 +14,13 @@ Copyright 2016 Avi Weinstock
    limitations under the License.
 */
 
-use llvmint;
 use std::mem;
+
+// adapted from llvmint generated bindings to remove the dependency
+extern {
+    #[link_name = "llvm.prefetch"]
+    fn llvm_prefetch(a: *mut i8, b: i32, c: i32, d: i32) -> ();
+}
 
 // http://llvm.org/docs/LangRef.html#llvm-prefetch-intrinsic
 /*
@@ -41,5 +46,5 @@ pub struct Data; unsafe impl CacheType for Data { const VALUE: i32 = 1; }
 #[inline(always)]
 pub fn prefetch<RW: ReadWrite, Loc: Locality, Cache: CacheType, T>(x: *const T) {
     // This should be exposable as safe, since "Prefetches have no effect on the behavior of the program but can change its performance characteristics."
-    unsafe { llvmint::prefetch(mem::transmute::<*const T, *mut i8>(x), RW::VALUE, Loc::VALUE, Cache::VALUE); }
+    unsafe { llvm_prefetch(mem::transmute::<*const T, *mut i8>(x), RW::VALUE, Loc::VALUE, Cache::VALUE); }
 }

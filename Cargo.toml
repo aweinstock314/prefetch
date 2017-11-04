@@ -8,4 +8,3 @@ license = "Apache-2.0"
 keywords = ["prefetch", "cache", "intrinsic"]
 
 [dependencies]
-llvmint = "0.0.2"

@@ -15,9 +15,8 @@ Copyright 2016 Avi Weinstock
 */
 
 //! This crate provides type-safe bindings to the LLVM prefetch instruction.
-#![feature(associated_consts)]
+#![feature(link_llvm_intrinsics)]
 #![cfg_attr(test, feature(test))]
-extern crate llvmint;
 
 #[cfg(test)]
 extern crate test;
